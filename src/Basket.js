@@ -6,8 +6,14 @@ class Basket {
     }
     add(item){
         for (let i = 0; i<item.length;i++){
+
+            if (this.duplicateChecker(item[i]))
+            {
+                return "Bagel already in basket";
+
+            }
             if (this.isFull()){
-                console.log('Basket is full');
+                //console.log('Basket is full');
                 return this.items;
             }else {
                 //console.log('else');
@@ -28,6 +34,19 @@ class Basket {
         } else {
             return false;
         }
+    }
+    increaseCapacity(increase)
+    {
+        this.capacity +=increase;
+    }
+
+    duplicateChecker (bagel)
+    { 
+        if (this.items.includes(bagel)){
+            return true;
+
+        }
+        else {return false;}
     }
 
 }
